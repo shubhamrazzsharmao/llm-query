@@ -23,6 +23,10 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+@app.get("/")
+def root():
+    return {"message": "Welcome to the FastAPI LLM Query Service!"}
+
 @app.get("/query")
 def query(q: str = Query(...), response: Response = None):
     response.headers["X-Email"] = EMAIL
